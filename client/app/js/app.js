@@ -85,6 +85,8 @@ $(function() {
         showList: function() {
             var $listTemplate = getTemplate('tpl-thesis-list');
             $('.app-content').html($listTemplate);
+			//s
+			this.loadAllThesis();
         },
         search: function(query, callback) {
             $.get('/api/search/?q=' + query, {
@@ -134,6 +136,7 @@ $(function() {
         displayLoadedList: function(list) {
             var self = this;
             // iterate thru the list to display each item
+			
             _.each(list, function(item) {
                 var $thesisItem = $(getTemplate('tpl-thesis-list-item', item));
                 var id = item.Id
@@ -146,18 +149,37 @@ $(function() {
                 $thesisItem.find('.btn-view').click(function() {
                     self.router.navigate('thesis-' + id, {trigger: true});
                 });
-				
                 $('.thesis-list').append($thesisItem);
 
             });
 
+            // add event handlers for the edit button
+
         },
         save: function(object) {
-            var self = this;
+			 var self = this;
             $.post('api/thesis', object, function(res) {
                 self.router.navigate('list', {trigger: true});
             });
             return false;
+			
+            /*var self = this;
+			var thesisObject = {};
+			var inputs = $('form').serializeArray();
+			
+			for (var i = 0; i < inputs.length; i++) {
+				thesisObject[inputs[i].name] = inputs[i].value;
+			}
+			
+			/*if (thesisObject.Title.length != 0){
+				alert("No entry.");
+			} */
+			
+           /* $.post('api/thesis', object, function(res) {
+				self.router.navigate('', {trigger: true});
+            });
+            return false; */
+			
         }
 
 
