@@ -146,11 +146,10 @@ $(function() {
                 $thesisItem.find('.btn-view').click(function() {
                     self.router.navigate('thesis-' + id, {trigger: true});
                 });
+				
                 $('.thesis-list').append($thesisItem);
 
             });
-
-            // add event handlers for the edit button
 
         },
         save: function(object) {
