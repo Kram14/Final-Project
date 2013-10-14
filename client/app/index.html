@@ -13,6 +13,7 @@
 					}
 			</style>
 	<!--FB plug-in -->
+	
 		<div id="fb-root"></div>
 				<script>(function(d, s, id) {
 				  var js, fjs = d.getElementsByTagName(s)[0];
@@ -22,6 +23,8 @@
 				  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 				</script>
+				
+	<!--FB plug-in -->
 		
 	<!--Navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -54,13 +57,14 @@
                         </li>
                     </ul>
                     <a href='#' class="btn btn-primary btn-login navbar-btn navbar-right">Log in</a>
+                    <form class="navbar-form navbar-right form-search" role="search" _lpchecked="1">
+                        <div class="form-group">
+                          <input type="text" class="form-control search-input" placeholder="Search">
+                        </div>
+                      </form>
                     </div>
                 </div>
             </div>
-			
-			<!--image-->
-			
-			<!--end fo image-->
 			
 			
             <div class='container'>
@@ -101,7 +105,10 @@
             <tr data-id="{{Id}}">
                 <td>{{Year}}</td>
                 <td>{{Title}}</td>
-                <td><a href='#'>Edit</a></td>
+                 <td>
+                    <a href='javascript:void(0)' class='btn-view'>View</a> &nbsp;
+                    <a href='javascript:void(0)' class='btn-edit'>Edit</a> &nbsp;
+                </td>
             </tr>
         </script>
 
@@ -131,14 +138,17 @@
                         <label for="description-input">Description</label>
                         <textarea id='description-input' name='Description' class="form-control" rows="3">{{Description}}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+					
                     {{#if Id}}
-                    <button class="btn btn-default">Delete</button>
+                        <input id='subtitle-input' type="text" style='display:none;' name='Id' value='{{Id}}'>
+                        <button class="btn-cancel btn btn-default">Cancel</button>
                     {{/if}}
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </script>
 	<!-- end of templates -->
+		
 		
 	<!-- view list -->
 		<script id="tpl-thesis-view-item" type="text/x-handlebars-template">
@@ -148,21 +158,23 @@
 	<!-- view list -->
 	
 	
-	<!-- fb comment -->
+	<!-- fb -->
+			<div class="fb-like" data-href="http://final-project-mark-n-marj.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
+			<hr>
 			<div class="fb-comments" data-href="http://final-project-mark-n-marj.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-numposts="5" data-width="600">
 			</div>
         </script>
-	<!-- fb comment -->
+	<!-- fb -->
 	
 	
-	<!-- navbar-->
+	<!-- end navbar-->
 	<div class="navbar navbar-inverse navbar-fixed-bottom">
       <div class="navbar-out">
 	  
           <p class="navbar-brand-b"><center><!--<a href = "#">-->m&m Advanced Web Computing / &copy; Copyright 2013  <!--</a>
 		  <a href = "http://kram14.github.io/AdvancedWebComputing/About%20Us/" target="_blank">About Us<!--</a>--></center>
 		  </p></div>
-</div>
+	</div>
 
     </body>
 </html>
